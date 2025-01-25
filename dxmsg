@@ -1,0 +1,29 @@
+GM_addStyle(".dxmsgbox { width: 390px; height:auto; position: fixed; bottom: 50px; right: 20px; }");
+GM_addStyle(".dxmsgitm { color: #fff; padding: 20px; display: none; margin: 20px; z-index: 799; width: 350px; height:auto; background-color :rgba(0, 130, 255, 0.6); border-radius: 5px; word-wrap: break-word; text-align: center }");
+GM_addStyle(".dxmsgitm > span { font-family: Helvetica, Arial, \"Lucida Grande\", sans-serif; font-weight: bold; font-size: 22px; line-height: 26px; letter-spacing: -0.4px;}");
+GM_addStyle(".dxmsgerr { background-color :rgba(255, 0, 0, 0.6); }");
+GM_addStyle(".dxmsgsuc { background-color :rgba(0, 255, 0, 0.6); }");
+
+let $ = jQuery;
+let notires = {};
+
+notires.msgbox = '<div class="dxmsgbox"></div>';
+notires.msgitm = '<div class="dxmsgitm"><span></span></div>';
+
+function Log(name, event, data) {
+
+    console.log('%c[' + name + '] %c' + event, 'color: #FF4B4B; line-height: 16px; font-size: 16px', 'color: #FFF; font-size: 14px;');
+    if(data == null) return;
+    console.log(data);
+    return;
+}
+
+function Msg(text, type) {
+    $('div.dxmsgbox').append(notires.msgitm);
+    $('div.dxmsgbox span').last().text(text);
+    $('div.dxmsgitm').last().addClass(type).fadeIn(300).delay(2000).fadeOut(300, function() {
+        $('div.dxmsgitm').first().remove();
+    });
+    Log('MSG: ' + text);
+    return;
+}
