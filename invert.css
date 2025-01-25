@@ -1,0 +1,20 @@
+:root {
+	background-color: #ddd;
+}
+html {
+	filter: invert(0.9);
+}
+[class *= "img"],
+[class *= "image"],
+[class *= "icon"],
+[class *= "logo"],
+[class *= "avatar"],
+[class *= "flag"],
+[class *= "lang"],
+[class *= "progress-bar"],
+picture,
+video,
+svg,
+img {
+	filter: invert(1) brightness(1.1);
+}
